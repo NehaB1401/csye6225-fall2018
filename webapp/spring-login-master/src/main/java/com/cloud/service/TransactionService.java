@@ -39,7 +39,7 @@ public class TransactionService {
 
 	/**
 	 * Deletes the transaction by transaction Id
-
+	 *
 	 * @param id
 	 */
 	public void deleteById(int id) {
@@ -49,6 +49,7 @@ public class TransactionService {
 
 	/**
 	 * Fetches all the transaction for the logged in user
+	 * 
 	 * @param userId
 	 * @return
 	 */
