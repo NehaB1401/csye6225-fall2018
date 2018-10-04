@@ -40,7 +40,7 @@ public class Transaction {
 	@Column(name = "category")
 	// @NotEmpty(message = "*Please provide transaction category")
 	private String category;
-	@OneToOne(fetch = FetchType.EAGER, orphanRemoval = false)
+	@OneToOne(fetch = FetchType.LAZY, orphanRemoval = false)
 	@JoinColumn(name = "user_id")
 	private User user;
 
