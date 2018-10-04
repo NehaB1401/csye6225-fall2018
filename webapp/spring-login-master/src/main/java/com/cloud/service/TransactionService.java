@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.cloud.model.Transaction;
 import com.cloud.repository.TransactionRepository;
 
+
 @Service("transactionService")
 public class TransactionService {
 
@@ -39,8 +40,7 @@ public class TransactionService {
 	}
 
 	/**
-	 * Deletes the trasaction by transaction Id
-	 *
+	 * Deletes the transaction by transaction Id
 	 * @param id
 	 */
 	public void deleteById(String id) {
