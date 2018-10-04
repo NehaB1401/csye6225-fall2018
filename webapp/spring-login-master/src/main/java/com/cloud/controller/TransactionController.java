@@ -75,7 +75,6 @@ public class TransactionController {
 	@RequestMapping(value = "/transaction/{id}", method = RequestMethod.PUT)
 	@ResponseBody
 	public void update(@PathVariable Integer id, @RequestBody Transaction transaction,HttpServletResponse response) throws IOException {
-
 		String status = CommonConstants.TRANSACTION_CREATED;
 		// Fetches the current user name who is logged in
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();

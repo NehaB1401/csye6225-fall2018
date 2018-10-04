@@ -17,7 +17,7 @@ public class CommonConstants {
 	/* Invalid Date format */
 	public static String INVALID_DATE_FORMAT = "Invalid date format. Please enter the date in the format : MM/DD/YYYY";
 	
-	/* Unauthorized update of transaction */
+	/*Transaction updated successfully */
 	public static String TRANSACTION_UPDATED = "Transaction has been successfully modified";
 	
 	/* Unauthorized update of transaction */
