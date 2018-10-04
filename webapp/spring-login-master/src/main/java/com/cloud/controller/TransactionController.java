@@ -44,7 +44,6 @@ public class TransactionController {
 	@RequestMapping(value = "/transaction", method = RequestMethod.POST)
 	@ResponseBody
 	public void create(@RequestBody Transaction transaction, HttpServletResponse response) throws IOException {
-		System.out.println(transaction);
 		String status = CommonConstants.TRANSACTION_CREATED;
 
 		if (Utils.validateDate(transaction.getDate().toString())) {
