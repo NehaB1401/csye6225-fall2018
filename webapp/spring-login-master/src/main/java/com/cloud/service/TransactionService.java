@@ -39,7 +39,6 @@ public class TransactionService {
 
 	/**
 	 * Deletes the transaction by transaction Id
-	 *
 	 * @param id
 	 */
 	public void deleteById(int id) {

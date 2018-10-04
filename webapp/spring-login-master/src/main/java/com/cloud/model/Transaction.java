@@ -26,6 +26,7 @@ public class Transaction {
 	@GeneratedValue
 //	@GeneratedValue(generator = "uuid2")
 //	@GenericGenerator(name = "uuid2", strategy = "uuid2")
+	@Column(name = "transaction_id")
 	private int transactionId;
 	@Column(name = "description")
 	@NotEmpty(message = "*Please provide some description of transaction")
