@@ -1,3 +1,16 @@
+<<<<<<< HEAD
+package com.cloud.service;
+
+import java.util.List;
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.cloud.model.Transaction;
+import com.cloud.repository.TransactionRepository;
+
+=======
 package com.cloud.service;
 
 import java.util.List;
@@ -7,6 +20,7 @@ import org.springframework.stereotype.Service;
 
 import com.cloud.model.Transaction;
 import com.cloud.repository.TransactionRepository;
+>>>>>>> 02868f3e2bc79d5af9176a95f4841f5aeccca19d
 
 @Service("transactionService")
 public class TransactionService {
