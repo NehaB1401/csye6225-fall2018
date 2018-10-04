@@ -9,7 +9,8 @@ import com.cloud.model.Transaction;
 @Repository("transactionRepository")
 public interface TransactionRepository extends CrudRepository<Transaction, Integer> {
 
+	Transaction findByTransactionId(int id);
+
 	List<Transaction> findByUserId(int userid);
 
-	Transaction findByTransactionId(int id);
 }

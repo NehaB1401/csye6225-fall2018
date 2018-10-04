@@ -22,8 +22,7 @@ public class Transaction {
 
 	@Id
 	@GeneratedValue
-	// GenericGenerator(name = "uuid", strategy = "uuid2")
-
+  //GenericGenerator(name = "uuid", strategy = "uuid2")
 	@Column(name = "transaction_id")
 	private int transactionId;
 	@Column(name = "description")
@@ -32,7 +31,6 @@ public class Transaction {
 	@Column(name = "merchant")
 	@NotEmpty(message = "*Please provide merchant name here")
 	private String merchant;
-	@Column(name = "amount")
 	// @NotEmpty(message = "*Please provide transaction amount")
 	private Float amount;
 	@Column(name = "date")
