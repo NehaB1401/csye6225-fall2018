@@ -2,7 +2,6 @@ package com.cloud.model;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -35,11 +34,11 @@ public class Transaction {
 	private Float amount;
 	@Column(name = "date")
 	// @NotEmpty(message = "*Please provide transaction date")
-	private Date date;
+	private String date;
 	@Column(name = "category")
 	// @NotEmpty(message = "*Please provide transaction category")
 	private String category;
-	@OneToOne(fetch = FetchType.EAGER, orphanRemoval = false)
+	@OneToOne(fetch = FetchType.LAZY, orphanRemoval = false)
 	@JoinColumn(name = "user_id")
 	private User user;
 
@@ -47,13 +46,13 @@ public class Transaction {
 
 	}
 
-	public Transaction(int transactionId, String description, String merchant, Float amount, Date date, String category,
+	public Transaction(int transactionId, String description, String merchant, Float amount, String date, String category,
 			User user) {
 		this.transactionId = transactionId;
 		this.description = description;
 		this.merchant = merchant;
 		this.amount = amount;
-		this.date = new Date();
+		this.date = date;
 		this.category = category;
 		this.user = user;
 	}
@@ -90,12 +89,12 @@ public class Transaction {
 		this.amount = amount;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDate(String string) {
+		this.date = string;
 	}
 
 	public String getCategory() {
