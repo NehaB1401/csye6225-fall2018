@@ -5,8 +5,10 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
@@ -20,7 +22,7 @@ public class Transaction {
 
 	@Id
 	@GeneratedValue
-	 //GenericGenerator(name = "uuid", strategy = "uuid2")
+	//GenericGenerator(name = "uuid", strategy = "uuid2")
 	@Column(name = "transaction_id")
 	private int transactionId;
 	@Column(name = "description")
@@ -29,26 +31,24 @@ public class Transaction {
 	@Column(name = "merchant")
 	@NotEmpty(message = "*Please provide merchant name here")
 	private String merchant;
-	@Column(name = "amount")
-	//@NotEmpty(message = "*Please provide transaction amount")
+	// @NotEmpty(message = "*Please provide transaction amount")
 	private Float amount;
 	@Column(name = "date")
-	//@NotEmpty(message = "*Please provide transaction date")
+	// @NotEmpty(message = "*Please provide transaction date")
 	private Date date;
 	@Column(name = "category")
-	//@NotEmpty(message = "*Please provide transaction category")
+	// @NotEmpty(message = "*Please provide transaction category")
 	private String category;
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER, orphanRemoval = false)
+	@JoinColumn(name = "user_id")
 	private User user;
 
-	public Transaction()
-	{
-		
+	public Transaction() {
+
 	}
-	
-	public Transaction(int transactionId, String description, String merchant, Float amount, Date date,
-			String category, User user) {
-		super();
+
+	public Transaction(int transactionId, String description, String merchant, Float amount, Date date, String category,
+			User user) {
 		this.transactionId = transactionId;
 		this.description = description;
 		this.merchant = merchant;
