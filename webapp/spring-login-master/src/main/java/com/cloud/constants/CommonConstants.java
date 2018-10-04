@@ -12,7 +12,7 @@ public class CommonConstants {
 	public static String TRANSACTION_CREATED = "Transaction has been created successfully";
 
 	/* Transaction updated successfully */
-	public static String TRANSACTION_UPDATED = "Transaction has been updated successfully";
+	public static String TRANSACTION_UPDATED = "Transaction has been modified successfully";
 	
 	/* Transaction failure */
 	public static String TRANSACTION_FAILURE = "Transaction creation failed";
@@ -30,5 +30,5 @@ public class CommonConstants {
 	public static String TRANSACTION_DELETION_FAILURE = "Transaction deletion failed";
 	
 	/* Get transaction failure */
-	public static String GET_TRANSACTION_FAILURE = "Get transaction failed";
+	public static String GET_ALL_TRANSACTION_FAILURE = "Get transaction failed";
 }
