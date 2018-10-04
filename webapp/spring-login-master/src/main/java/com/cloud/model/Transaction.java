@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
@@ -22,8 +23,8 @@ public class Transaction {
 
     @Id
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @Column(name = "transaction_id")
-	private String transactionId;
+    @Column(name = "id")
+	private int transactionId;
 	@Column(name = "description")
 	@NotEmpty(message = "*Please provide some description of transaction")
     private String description;
@@ -40,11 +41,13 @@ public class Transaction {
 	@NotEmpty(message = "*Please provide transaction category")
     private String category;
 	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "user_id", nullable = false)
     private User user;
-	public String getTransactionId() {
+	
+	public int getTransactionId() {
 		return transactionId;
 	}
-	public void setTransactionId(String transactionId) {
+	public void setTransactionId(int transactionId) {
 		this.transactionId = transactionId;
 	}
 	public String getDescription() {
