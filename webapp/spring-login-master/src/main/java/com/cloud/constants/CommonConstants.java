@@ -41,11 +41,17 @@ public class CommonConstants {
 	/* Upload attachments failure */
 	public static String UPLOAD_ATTACHMENTS_FAILURE = "Upload attachment for transaction failed";
 	
+	/* Upload attachments failure */
+	public static String INVALID_ATTACHMENT = "Invalid attachment extension";
+	
 	/* Delete attachments failure */
 	public static String DELETE_ATTACHMENTS_FAILURE = "Delete attachment for transaction failed";
 	
 	/* Attachment deleted successfully */
 	public static String DELETE_ATTACHMENTS_SUCCESS = "Deleted Successfully";
+	
+	/* Attachment not present */
+	public static String ATTACHMENTS_NOT_PRESENT = "Receipt not present for the transaction";
 	
 	public static interface StatusCodes
 	{
@@ -76,6 +82,10 @@ public class CommonConstants {
 		public static String UPLOAD_ATTACHMENT_FAILURE = "802";
 		
 		public static String ATTACHMENT_DELETION_FAILURE = "803";
+		
+		public static String ATTACHMENT_NOT_PRESENT = "804";
+		
+		public static String INVALID_ATTACHMENT = "805";
 		
 		//Common Failure
 		

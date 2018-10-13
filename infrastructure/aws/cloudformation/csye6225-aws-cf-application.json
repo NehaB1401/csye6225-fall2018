@@ -1,4 +1,4 @@
-{
+﻿﻿{
    "Parameters":{
       "StackName":{
          "Description":"An stack name that will be prefixed to resource names",
@@ -11,6 +11,14 @@
       "SubnetId":{
          "Description":"A subnet id for EC2 instance",
          "Type":"String"
+      },
+      "SubnetId2":{
+        "Description":"A subnet id for EC2 instance",
+        "Type":"String"
+     },
+      "BucketName":{
+          "Description":"A S3 bucket name",
+          "Type":"String"   
       }
    },
    "Resources":{
@@ -92,8 +100,41 @@
                   }
                }
             ]
-         }
+        }      
       },
+      "MyDB" : {
+        "Type" : "AWS::RDS::DBInstance",
+        "Properties" : {
+           "AllocatedStorage" : "100",
+           "DBInstanceClass" : "db.t2.medium",
+           "Engine" : "MySQL",
+           "MultiAZ" : "false",
+           "DBInstanceIdentifier" : "csye6225-spring2018",
+           "EngineVersion" : "5.7.23",
+           "PubliclyAccessible" : "false",
+           "Iops" : "1000",
+           "DBName": "csye6225",
+           "DBSubnetGroupName" : 
+               {
+            "Ref": "MyDBSubnetGroup"
+        },
+           "MasterUsername" : "csye6225master",
+           "MasterUserPassword" : "csye6225password"
+        }
+     },
+     "MyDBSubnetGroup": {
+        "Type": "AWS::RDS::DBSubnetGroup",
+        "Properties": {
+            "DBSubnetGroupDescription": "Subnets available for the RDS DB Instance",
+            "SubnetIds": [{
+                    "Ref": "SubnetId"
+                },
+                {
+                    "Ref": "SubnetId2"
+                }
+            ]
+        }
+    } ,   
       "DynamoDBTable":{
          "Type":"AWS::DynamoDB::Table",
          "Properties":{
@@ -115,7 +156,15 @@
             },
             "TableName":"csye6225"
          }
-      }
+      },
+      "S3Bucket":{
+        "Type":"AWS::S3::Bucket",
+        "Properties":{
+            "BucketName":{
+                "Ref":"BucketName"
+            }
+        }
+    }
    },
    "Outputs":{
       "InstanceId":{
@@ -152,4 +201,5 @@
          }
       }
    }
+>>>>>>> 2a7be57a52de29d9909425525cb093cf36b55ad0
 }
