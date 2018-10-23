@@ -8,11 +8,11 @@ install: true
 
 script:
   - pwd
-  - cd webapp
+  - cd webapp/spring-login-master
   - ./mvn package war
   - cd /target
   - ls -al
-  - cd ../
+  - cd ../../
   - pwd
   - ls -al
 
@@ -22,7 +22,7 @@ after_success:
   - mkdir codedeploy_artifact
   - cp infrastructure/aws/codedeploy/*.sh .
   - cp infrastructure/aws/codedeploy/*.yml .
-  - zip -r csye6225-web-app-${TRAVIS_JOB_NUMBER}.zip webapp/target/ROOT.war *.sh *.yml
+  - zip -r csye6225-web-app-${TRAVIS_JOB_NUMBER}.zip webapp/spring-login-master/target/login-0.0.1.war *.sh *.yml
   - ls -al
   - mv csye6225-web-app-${TRAVIS_JOB_NUMBER}.zip codedeploy_artifact/
   - ls -al
