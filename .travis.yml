@@ -13,7 +13,7 @@ script:
   - ./mvnw clean install
   - cd target
   - ls -al
-  - cd ../../
+  - cd ../../../
   - pwd
   - ls -al
 
