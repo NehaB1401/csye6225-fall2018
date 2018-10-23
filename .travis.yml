@@ -9,7 +9,7 @@ install: true
 script:
   - pwd
   - cd webapp/spring-login-master
-  - ./mvn package war
+  - ./mvnw package war
   - cd /target
   - ls -al
   - cd ../../
