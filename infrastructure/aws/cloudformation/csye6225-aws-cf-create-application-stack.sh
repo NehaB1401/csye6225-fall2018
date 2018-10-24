@@ -22,9 +22,9 @@ echo "Creating stack.."
 STACK_ID=$(\aws cloudformation create-stack --stack-name ${STACK_NAME} \
 	--template-body file://csye6225-aws-cf-application.json\
 	--parameters ParameterKey=StackName,ParameterValue=${STACK_NAME} ParameterKey=VpcId,ParameterValue=${vpc_id} ParameterKey=SubnetId,ParameterValue=${subnet_id} ParameterKey=SubnetId2,ParameterValue=${subnet_id2} ParameterKey=BucketName,ParameterValue=${bucket_name} ParameterKey=CodeDeployEC2ServiceRoleService,ParameterValue=$CODE_DEPLOY_EC2_SERVICEROLE_SERVICE ParameterKey=CodeDeployEC2ServiceRoleName,ParameterValue=$CODE_DEPLOY_EC2_SERVICE_ROLE ParameterKey=CodeDeployEC2S3Name,ParameterValue=$CODE_DEPLOY_EC2_S3_NAME \
---capabilities CAPABILITY_IAM \
---capabilities CAPABILITY_NAMED_IAM \
-   | jq -r .StackId \
+	--capabilities CAPABILITY_IAM \
+	--capabilities CAPABILITY_NAMED_IAM \
+ 	| jq -r .StackId \
 )
 	
 	
