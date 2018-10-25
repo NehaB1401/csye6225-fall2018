@@ -40,7 +40,7 @@ public class AmazonClient implements BaseClient{
 	@PostConstruct
 	private void initializeAmazon() {
 		BasicAWSCredentials creds = new BasicAWSCredentials(this.accessKey, this.secretKey);
-		this.s3client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(false)).build();
+		this.s3client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(creds)).build();
 	}
 
 	
