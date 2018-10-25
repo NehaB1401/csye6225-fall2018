@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.amazonaws.auth.DefaultAWSCrentialsProviderChain;
 import com.amazonaws.regions.Regions;
+import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.auth.InstanceProfileCredentialsProvider;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
@@ -29,7 +30,7 @@ public class AmazonClient implements BaseClient{
 
 	@Value("${amazonProperties.endpointUrl}")
 	private String endpointUrl;
-	@Value("${amazonProperties.bucketName}")
+	@Value("${amazonProperties.bucket.name}")
 	private String bucketName;
 	
 
