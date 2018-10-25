@@ -30,7 +30,7 @@ public class AmazonClient implements BaseClient{
 
 	@Value("${amazonProperties.endpointUrl}")
 	private String endpointUrl;
-	@Value("${amazonProperties.bucket.name}")
+	@Value("${spring.bucket.name}")
 	private String bucketName;
 	
 
