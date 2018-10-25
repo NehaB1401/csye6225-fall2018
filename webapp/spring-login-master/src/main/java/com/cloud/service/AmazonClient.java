@@ -73,7 +73,7 @@ public class AmazonClient implements BaseClient{
     private void uploadFileTos3bucket(String fileName, MultipartFile multipartFile) {
 		ObjectMetadata metadata = new ObjectMetadata();
 		metadata.setContentLength(multipartFile.getSize());
-        s3client.putObject(new PutObjectRequest(bucketName, fileName, multipartFile.getInputStream(),metadata);
+        s3client.putObject(new PutObjectRequest(bucketName, fileName, multipartFile.getInputStream(),metadata));
               //  .withCannedAcl(CannedAccessControlList.PublicRead));
     }
 }
