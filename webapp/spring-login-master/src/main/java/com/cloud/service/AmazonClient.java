@@ -36,7 +36,7 @@ public class AmazonClient implements BaseClient{
 	@PostConstruct
 	private void initializeAmazon() {
 		this.s3client = AmazonS3ClientBuilder.standard()
-						.withCredentials(new InstanceProfileCredentialsProvider(false))
+						.withCredentials(new DefaultAWSCrentialsProviderChain())
 						.build();
 	}
 	
@@ -44,10 +44,10 @@ public class AmazonClient implements BaseClient{
 	public String uploadFile(MultipartFile multipartFile) throws Exception {
 		
 		String fileUrl = "";
-		File file = convertMultiPartToFile(multipartFile);
+	//	File file = convertMultiPartToFile(multipartFile);
 		String fileName = Utils.generateFileName(multipartFile);
 		fileUrl = endpointUrl + "/" + bucketName + "/" + fileName;
-		uploadFileTos3bucket(fileName, file);
+		uploadFileTos3bucket(fileName, multipartFile);
 		file.delete();
 
 		return fileUrl;
@@ -62,14 +62,17 @@ public class AmazonClient implements BaseClient{
 
     private File convertMultiPartToFile(MultipartFile file) throws IOException {
         File convFile = new File(file.getOriginalFilename());
-        FileOutputStream fos = new FileOutputStream(convFile);
+        FileOutputStream fos = new FileOutputStream("/opt/tomcat/uploads"+convFile);
         fos.write(file.getBytes());
         fos.close();
         return convFile;
     }
 
-    private void uploadFileTos3bucket(String fileName, File file) {
-        s3client.putObject(new PutObjectRequest(bucketName, fileName, file)
-                .withCannedAcl(CannedAccessControlList.PublicRead));
+
+    private void uploadFileTos3bucket(String fileName, MultipartFile multipartFile) {
+		ObjectMetadata metadata = new ObjectMetadata();
+		metadata.setContentLength(multipartFile.getSize());
+        s3client.putObject(new PutObjectRequest(bucketName, fileName, multipartFile.getInputStream(),metadata);
+              //  .withCannedAcl(CannedAccessControlList.PublicRead));
     }
 }
