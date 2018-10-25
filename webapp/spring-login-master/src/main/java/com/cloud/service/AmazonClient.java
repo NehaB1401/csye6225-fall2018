@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-import com.amazonaws.auth.DefaultAWSCrentialsProviderChain;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.auth.InstanceProfileCredentialsProvider;
@@ -37,7 +37,7 @@ public class AmazonClient implements BaseClient{
 	@PostConstruct
 	private void initializeAmazon() {
 		this.s3client = AmazonS3ClientBuilder.standard()
-						.withCredentials(new DefaultAWSCrentialsProviderChain())
+						.withCredentials(new DefaultAWSCredentialsProviderChain())
 						.build();
 	}
 	
@@ -45,11 +45,11 @@ public class AmazonClient implements BaseClient{
 	public String uploadFile(MultipartFile multipartFile) throws Exception {
 		
 		String fileUrl = "";
-	//	File file = convertMultiPartToFile(multipartFile);
+		File file = convertMultiPartToFile(multipartFile);
 		String fileName = Utils.generateFileName(multipartFile);
 		fileUrl = endpointUrl + "/" + bucketName + "/" + fileName;
 		uploadFileTos3bucket(fileName, multipartFile);
-		file.delete();
+	    file.delete();
 
 		return fileUrl;
 	}
@@ -70,7 +70,7 @@ public class AmazonClient implements BaseClient{
     }
 
 
-    private void uploadFileTos3bucket(String fileName, MultipartFile multipartFile) {
+    private void uploadFileTos3bucket(String fileName, MultipartFile multipartFile) throws IOException {
 		ObjectMetadata metadata = new ObjectMetadata();
 		metadata.setContentLength(multipartFile.getSize());
         s3client.putObject(new PutObjectRequest(bucketName, fileName, multipartFile.getInputStream(),metadata));
