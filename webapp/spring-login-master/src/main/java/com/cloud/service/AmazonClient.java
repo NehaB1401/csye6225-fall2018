@@ -32,24 +32,25 @@ public class AmazonClient implements BaseClient{
 	private String endpointUrl;
 	@Value("${spring.bucket.name}")
 	private String bucketName;
-	@Value("${accessKey}")
+/*	@Value("${accessKey}")
 	private String accessKey;
 	@Value("${secretKey}")
 	private String secretKey;
- 	
+ 	*/
 	@PostConstruct
 	private void initializeAmazon() {
-		BasicAWSCredentials creds = new BasicAWSCredentials(this.accessKey, this.secretKey);
-		this.s3client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(creds)).build();
+		//BasicAWSCredentials creds = new BasicAWSCredentials(this.accessKey, this.secretKey);
+		this.s3client = AmazonS3ClientBuilder.standard()
+						.withCredentials(new nstanceProfileCredentialsProvider(false)).build();
 	}
 
 	
 	
-	public String test()
+	/*public String test()
 	{
 		return "Access Key : " + accessKey;
 	}
-	
+	*/
 	@Override
 	public String uploadFile(MultipartFile multipartFile) throws Exception {
 		
