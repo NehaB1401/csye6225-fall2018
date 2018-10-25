@@ -11,8 +11,6 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.amazonaws.auth.AWSStaticCredentialsProvider;
-import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
@@ -30,27 +28,17 @@ public class AmazonClient implements BaseClient{
 
 	@Value("${amazonProperties.endpointUrl}")
 	private String endpointUrl;
-	@Value("${spring.bucket.name}")
+	@Value("${amazonProperties.bucketName}")
 	private String bucketName;
-/*	@Value("${accessKey}")
-	private String accessKey;
-	@Value("${secretKey}")
-	private String secretKey;
- 	*/
+	
+
 	@PostConstruct
 	private void initializeAmazon() {
-		//BasicAWSCredentials creds = new BasicAWSCredentials(this.accessKey, this.secretKey);
 		this.s3client = AmazonS3ClientBuilder.standard()
-						.withCredentials(new InstanceProfileCredentialsProvider(false)).build();
+						.withCredentials(new InstanceProfileCredentialsProvider(false))
+						.build();
 	}
-
 	
-	
-	/*public String test()
-	{
-		return "Access Key : " + accessKey;
-	}
-	*/
 	@Override
 	public String uploadFile(MultipartFile multipartFile) throws Exception {
 		
