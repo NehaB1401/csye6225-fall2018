@@ -321,7 +321,22 @@
                     "Ref": "BucketName"
                 }
             }
-        }
+        },
+        "CloudWatchLogGroup": {
+            "Type" : "AWS::Logs::LogGroup",
+            "Properties" : {
+                "LogGroupName" : "csye6225_fall2018"
+             
+            }
+        },
+        "webapp": {
+            "Type": "AWS::Logs::LogStream",
+            "Properties": {
+              "LogGroupName" : "csye6225_fall2018",
+              "LogStreamName": "webapp"
+            },
+            "DependsOn": "CloudWatchLogGroup"
+          }
     },
     "Outputs": {
         "InstanceId": {
