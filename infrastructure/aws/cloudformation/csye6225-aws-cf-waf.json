@@ -973,7 +973,7 @@
             },
             "Priority": 10,
             "RuleId": {
-              "Ref": "wafrSQLiRule"
+              "Ref": "wafrSizeRestrictionRule"
             }
           },
           {
@@ -982,9 +982,9 @@
                 "Ref": "ruleAction"
               }
             },
-            "Priority": 20, 
+            "Priority": 20,
             "RuleId": {
-              "Ref": "wafgAuthTokenRule"
+              "Ref": "wafrBlacklistIpRule"
             }
           },
           {
@@ -995,7 +995,7 @@
             },
             "Priority": 30,
             "RuleId": {
-              "Ref": "wafrXSSRule"
+              "Ref": "wafgAuthTokenRule"
             }
           },
           {
@@ -1006,7 +1006,7 @@
             },
             "Priority": 40,
             "RuleId": {
-              "Ref": "wafrPathsRule"
+              "Ref": "wafrSQLiRule"
             }
           },
           {
@@ -1017,7 +1017,7 @@
             },
             "Priority": 50,
             "RuleId": {
-              "Ref": "wafrAdminAccessRule"
+              "Ref": "wafrXSSRule"
             }
           },
           {
@@ -1026,9 +1026,9 @@
                 "Ref": "ruleAction"
               }
             },
-            "Priority": 60,  
+            "Priority": 60,
             "RuleId": {
-              "Ref": "wafrPHPInsecureRule"
+              "Ref": "wafrPathsRule"
             }
           },
           {
@@ -1039,7 +1039,7 @@
             },
             "Priority": 70,
             "RuleId": {
-              "Ref": "wafrSizeRestrictionRule"
+              "Ref": "wafrPHPInsecureRule"
             }
           },
           {
@@ -1072,7 +1072,7 @@
             },
             "Priority": 100,
             "RuleId": {
-              "Ref": "wafrBlacklistIpRule"
+              "Ref": "wafrAdminAccessRule"
             }
           }
         ]
