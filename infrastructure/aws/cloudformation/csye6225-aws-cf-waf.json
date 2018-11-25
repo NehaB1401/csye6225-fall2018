@@ -973,7 +973,7 @@
             },
             "Priority": 10,
             "RuleId": {
-              "Ref": "wafrSizeRestrictionRule"
+              "Ref": "wafrSQLiRule"
             }
           },
           {
@@ -982,18 +982,7 @@
                 "Ref": "ruleAction"
               }
             },
-            "Priority": 20,
-            "RuleId": {
-              "Ref": "wafrBlacklistIpRule"
-            }
-          },
-          {
-            "Action": {
-              "Type": {
-                "Ref": "ruleAction"
-              }
-            },
-            "Priority": 30,
+            "Priority": 20, 
             "RuleId": {
               "Ref": "wafgAuthTokenRule"
             }
@@ -1004,18 +993,7 @@
                 "Ref": "ruleAction"
               }
             },
-            "Priority": 40,
-            "RuleId": {
-              "Ref": "wafrSQLiRule"
-            }
-          },
-          {
-            "Action": {
-              "Type": {
-                "Ref": "ruleAction"
-              }
-            },
-            "Priority": 50,
+            "Priority": 30,
             "RuleId": {
               "Ref": "wafrXSSRule"
             }
@@ -1026,7 +1004,7 @@
                 "Ref": "ruleAction"
               }
             },
-            "Priority": 60,
+            "Priority": 40,
             "RuleId": {
               "Ref": "wafrPathsRule"
             }
@@ -1037,9 +1015,31 @@
                 "Ref": "ruleAction"
               }
             },
-            "Priority": 70,
+            "Priority": 50,
+            "RuleId": {
+              "Ref": "wafrAdminAccessRule"
+            }
+          },
+          {
+            "Action": {
+              "Type": {
+                "Ref": "ruleAction"
+              }
+            },
+            "Priority": 60,  
             "RuleId": {
               "Ref": "wafrPHPInsecureRule"
+            }
+          },
+          {
+            "Action": {
+              "Type": {
+                "Ref": "ruleAction"
+              }
+            },
+            "Priority": 70,
+            "RuleId": {
+              "Ref": "wafrSizeRestrictionRule"
             }
           },
           {
@@ -1072,7 +1072,7 @@
             },
             "Priority": 100,
             "RuleId": {
-              "Ref": "wafrAdminAccessRule"
+              "Ref": "wafrBlacklistIpRule"
             }
           }
         ]
