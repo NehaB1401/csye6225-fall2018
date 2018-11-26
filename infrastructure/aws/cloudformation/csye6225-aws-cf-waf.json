@@ -1026,7 +1026,9 @@
             }
           },
           {
-            "Action": "ALLOW",
+            "Action": {
+              "Type": "ALLOW"
+            },
             "Priority": 80,
             "RuleId": {
               "Ref": "wafrCSRFRule"
