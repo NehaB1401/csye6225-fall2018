@@ -40,7 +40,7 @@ public class UserController {
      * Added the function to get time for authenticated users
      * @return String
      */
-    @RequestMapping(value={"/time"}, method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value={"/datetime"}, method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     public String time(){
     	    	
